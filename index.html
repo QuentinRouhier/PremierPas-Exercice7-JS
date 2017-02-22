@@ -11,15 +11,32 @@
     <button id="valider" name="valider">Valider</button>
   </form>
   <script>
-  document.getElementById('valider').addEventListener("click", calcul);
-      function calcul(){
+  // Prend l'id vilder dans le html et fait fonctionner les fonctions " au click de l'id
+  document.getElementById('valider').addEventListener("click", function(){
+  // creation d'un variable pour permettre de faire une alerte (la variable reponse = a la fonction )
+    var reponse = calcul();
+    alert(reponse);
+  });
+  //déclaration la fonction
+  function calcul(){
+    // nomme la variable et prend l'id pointure , le '.value' reprend tout ce qui est dans l'input de l'id
     var shoeSize = document.getElementById('pointure').value;
+    // nomme la variables et prend l'id annee , le '.value' reprend tout ce qui est dans l'input de l'id
     var year = document.getElementById('annee').value;
-    var result;
-    result = (shoeSize * 2 + 5) * 50 - year + 1766;
-    alert(result);
-    return result;
+    //initialise le result a 0 ;
+    var result = 0;
+    // si les deux variables ne sont pas des chiffre alors une alert apparer ! isNaN= is not a number
+    if (isNaN(shoeSize) || isNaN(year) || pointure == '' || year == ''){
+    //arrete le if
+      return 'Il faut des nombres';
+    } else {
+    // une variable result et fait le calcul
+      result = ((parseInt(shoeSize) * 2 + 5) * 50 - year) + 1766;
+    // arrete la le else
+      return result;
+    }
   }
   </script>
 </body>
 </html>
+
